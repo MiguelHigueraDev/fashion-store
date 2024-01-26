@@ -10,7 +10,7 @@ body {
     background-image: url('/collection-sm.jpeg');
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 988px) {
     .hero-bg {
         background-image: url('/collection.jpg');
     }
@@ -20,4 +20,15 @@ body {
 .hero-bg:hover {
     outline: 3px solid #fff;
     outline-offset: -10px;
+}
+
+.logo {
+    z-index: 1022;
+    display: block;
+    height: 2.8125rem;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 8.5625rem
 }
