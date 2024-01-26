@@ -6,7 +6,18 @@ body {
     font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
 }
 
-.hero-a:hover {
+.hero-bg {
+    background-image: url('/collection-sm.jpeg');
+}
+
+@media screen and (min-width: 768px) {
+    .hero-bg {
+        background-image: url('/collection.jpg');
+    }
+}
+
+
+.hero-bg:hover {
     outline: 3px solid #fff;
     outline-offset: -10px;
 }
