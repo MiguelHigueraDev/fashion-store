@@ -90,7 +90,7 @@ const Cart = ({ isOpen, toggleCart }) => {
                   </div>
                   <div className="flex justify-between items-center">
                     <p className="font-bold text-lg">
-                      ${Math.round(product.price * product.quantity)}
+                      ${(product.price * product.quantity).toFixed(2)}
                     </p>
                     <button
                       onClick={() => handleRemoveProduct(product)}
@@ -111,10 +111,10 @@ const Cart = ({ isOpen, toggleCart }) => {
                   Total:{" "}
                   <span className="font-bold">
                     $
-                    {Math.round(cartItems.reduce(
+                    {(cartItems.reduce(
                       (acc, item) => acc + item.price * item.quantity,
                       0
-                    ))}
+                    )).toFixed(2)}
                   </span>
                 </p>
               </div>
