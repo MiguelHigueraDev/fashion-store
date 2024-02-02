@@ -5,16 +5,19 @@ import { PropTypes } from 'prop-types'
 
 const Main = ({children}) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [products, setProducts] = useState([])
 
   const toggleCart = () => {
     setIsOpen(!isOpen)
   }
 
   return (
-    <div className="py-2 px-5 my-2">
-        <Header isCartOpen={isOpen} toggleCart={toggleCart} />
-        <Cart isOpen={isOpen} />
-        {children}
+    <div className="">
+        <Cart isOpen={isOpen} toggleCart={toggleCart} products={products} />
+        <div className="py-4 px-5">
+          <Header isCartOpen={isOpen} toggleCart={toggleCart} />
+          {children}
+        </div>
     </div>
   )
 }

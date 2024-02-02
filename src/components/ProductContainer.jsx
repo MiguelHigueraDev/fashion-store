@@ -1,41 +1,39 @@
+import { useEffect, useState } from "react";
 import { PropTypes } from 'prop-types'
-import { useEffect, useState } from 'react';
-import Product from './Product';
-import Loading from './Loading';
-import Error from './Error';
-const ProductContainer = ({ categoryUrl }) => {
+import Loading from "./Loading";
+import Error from "./Error";
 
-  const [products, setProducts] = useState(null);
+const ProductContainer = ({ productId }) => {
+  const [productObj, setProductObj] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true)
-    fetch(categoryUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      setProducts(data)
-    })
-    .catch((error) => setError(error.message))
-    .finally(() => setLoading(false))
-  }, [categoryUrl])
+    setLoading(true);
+    fetch(`https://fakestoreapi.com/products/${productId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setProductObj(data);
+      })
+      .catch((error) => setError(error.message))
+      .finally(() => setLoading(false));
+  }, [productId]);
 
   if (loading) return <Loading />
-  if (error) return <Error message={error} />
+  if (error) return <Error message={'Product not found'}/>
 
   return (
-    <main className="max-w-[1800px] mx-auto mt-[100px] grid grid-rows-1 grid-cols-1 md:grid-rows-2 md:grid-cols-2 lg:grid-rows-2 lg:grid-cols-3 2xl:grid-cols-4 2xl:grid-rows-2 gap-10 place-content-center items-center justify-center justify-items-center">
-    {products.map((product) => (
-      <Product key={product.id} title={product.title} 
-      description={product.description} image={product.image} 
-      price={product.price} rating={product.rating} />
-    ))}
-    </main>
+    <div className="max-w-800px mx-auto mt-10 md:mt-0 md:h-[90vh] flex gap-10 items-center justify-center">
+        <img src={productObj.image} width={"200px"} height={"200px"} className="" />
+        <div className="max-w-[500px] space-y-4 flex justify-center align-center flex-col">
+            <h3 className="font-bold text-2xl">{productObj.title}</h3>
+            <p className="text-lg font-normal text-gray-600">{productObj.description}</p>
+            <button className="mt-8 self-start btn">Add to cart</button>
+        </div>
+    </div>
   )
-}
-
+};
 ProductContainer.propTypes = {
-  categoryUrl: PropTypes.string
+    productId: PropTypes.string
 }
-
-export default ProductContainer
+export default ProductContainer;

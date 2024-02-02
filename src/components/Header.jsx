@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types'
 
 const Header = ({isCartOpen, toggleCart}) => {
   return (
-    <header className="mt-2 relative">
+    <header className="relative">
         <nav className="flex gap-3 justify-between text-xl z-5">
             <ul className="flex gap-3">
                 <li className="hover:underline decoration-black underline-offset-4"><Link to="/category/women">Women</Link></li>

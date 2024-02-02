@@ -4,6 +4,17 @@
 
 body {
     font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+root {
+    padding: 10px;
 }
 
 .hero-bg {
@@ -14,6 +25,25 @@ body {
     .hero-bg {
         background-image: url('/collection.jpg');
     }
+}
+
+.btn {
+    background-color: #fff;
+    border: 1px solid black;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #eee
+}
+
+.btn:active {
+    background-color: #ddd;
 }
 
 

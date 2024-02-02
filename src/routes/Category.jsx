@@ -2,7 +2,7 @@ import Main from "../components/Main"
 import { useParams } from 'react-router-dom'
 import NotFound from "../components/NotFound"
 import { categoryRoutes } from "../constants/category_routes"
-import ProductContainer from "../components/ProductContainer"
+import CategoryContainer from "../components/CategoryContainer"
 
 const Category = () => {
   const { category } = useParams()
@@ -10,11 +10,11 @@ const Category = () => {
     <Main>
 
     {category === 'men' ? (
-      <ProductContainer categoryUrl={categoryRoutes.men} />
+      <CategoryContainer categoryUrl={categoryRoutes.men} />
     ): category === 'women' ? (
-      <ProductContainer categoryUrl={categoryRoutes.women} />
+      <CategoryContainer categoryUrl={categoryRoutes.women} />
     ): category === 'jewelry' ? (
-      <ProductContainer categoryUrl={categoryRoutes.jewelry} />
+      <CategoryContainer categoryUrl={categoryRoutes.jewelry} />
     ): (
       <NotFound />
     )}
