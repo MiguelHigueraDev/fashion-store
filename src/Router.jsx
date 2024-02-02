@@ -8,7 +8,11 @@ import { createContext, useState } from "react";
 // Create context to access cartItems from all routes
 export const ShopContext = createContext({
   cartItems: [],
-  addToCart : () => {}
+  addToCart : () => {},
+  updateQuantity : () => {},
+  addQuantity: () => {},
+  removeQuantity: () => {},
+  removeProduct: () => {},
 })
 
 const Router = () => {
@@ -23,6 +27,26 @@ const Router = () => {
     }
     // Create product with base quantity (1)
     setCartItems(cartItems => [...cartItems, {...product, quantity}])
+  }
+
+  const updateQuantity = (product, quantity) => {
+    const qty = parseInt(quantity)
+    if (isNaN(qty)) return setCartItems(cartItems.map(item => item.id === product.id ? {...item, quantity: 1} : item))
+    if(qty < 0) return setCartItems(cartItems.map(item => item.id === product.id ? {...item, quantity: 1} : item))
+    setCartItems(cartItems.map(item => item.id === product.id ? {...item, quantity: qty} : item))
+  }
+
+  const addQuantity = (product) => {
+    setCartItems(cartItems.map(item => item.id === product.id ? {...item, quantity: parseInt(item.quantity) + 1} : item))
+  }
+
+  const removeQuantity = (product) => {
+    if(product.quantity - 1 < 1) return
+    setCartItems(cartItems.map(item => item.id === product.id ? {...item, quantity: parseInt(item.quantity) - 1} : item))
+  }
+
+  const removeProduct = (product) => {
+    setCartItems(cartItems.filter(item => item.id !== product.id))
   }
 
   const router = createBrowserRouter([
@@ -42,7 +66,7 @@ const Router = () => {
   ]);
 
   return (
-    <ShopContext.Provider value={{cartItems, addToCart}}>
+    <ShopContext.Provider value={{cartItems, addToCart, updateQuantity, addQuantity, removeQuantity, removeProduct}}>
       <RouterProvider router={router} />
     </ShopContext.Provider>
   )

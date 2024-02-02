@@ -14,9 +14,9 @@ const Header = ({toggleCart, toggleMenu}) => {
                 <li className="hover:underline decoration-black underline-offset-4"><Link to="/category/jewelry">Jewelry</Link></li>
             </ul>
             <button onClick={toggleMenu} className="flex sm:hidden"><img src='/menu.svg' className="w-6 h-6"></img></button>
-            <button type="button" onClick={toggleCart} className="flex flex-col items-center justify-end decoration-black underline-offset-4">
+            <button type="button" onClick={toggleCart} className="flex gap-1 items-center justify-center decoration-black underline-offset-4">
               <img src="/cart.svg" className="w-6 h-6 md:h-8 md:w-8"></img>
-              {cartItems.length > 0 && <p className="text-md fixed top-[48px]">{cartItems.length}</p>}
+              {cartItems.length > 0 && <p className="text-md relative top-[8px] mb-2">{cartItems.length}</p>}
             </button>
             <Link to="/" className="logo-sm sm:logo m-0 w-30 uppercase tracking-[5px] font-bold text-2xl sm:text-4xl flex-grow select-none">Svelte</Link>
         </nav>

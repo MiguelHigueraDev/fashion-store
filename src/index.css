@@ -13,6 +13,22 @@ html {
     padding: 0;
 }
 
+body::-webkit-scrollbar, div::-webkit-scrollbar {
+    width: 12px;
+}
+
+body::-webkit-scrollbar-track, div::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    border: 1px solid #cacaca;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+
+body::-webkit-scrollbar-thumb, div::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #363636;
+}
+
 root {
     padding: 10px;
 }
