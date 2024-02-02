@@ -27,8 +27,8 @@ const CategoryContainer = ({ categoryUrl }) => {
     <main className="max-w-[1800px] mx-auto mt-[100px] grid grid-rows-1 grid-cols-1 md:grid-rows-2 md:grid-cols-2 lg:grid-rows-2 lg:grid-cols-3 2xl:grid-cols-4 2xl:grid-rows-2 gap-10 place-content-center items-center justify-center justify-items-center">
     {products.map((product) => (
       <Product key={product.id} title={product.title} 
-      description={product.description} image={product.image} 
-      price={product.price} rating={product.rating} id={product.id} />
+      image={product.image} price={product.price} 
+      id={product.id} />
     ))}
     </main>
   )

@@ -3,8 +3,29 @@ import "./index.css";
 import Category from "./routes/Category";
 import Index from "./routes/Index";
 import Product from "./routes/Product";
+import { createContext, useState } from "react";
+
+// Create context to access cartItems from all routes
+export const ShopContext = createContext({
+  cartItems: [],
+  addToCart : () => {}
+})
 
 const Router = () => {
+  const [cartItems, setCartItems] = useState([])
+
+  const addToCart = (product) => {
+    console.log(cartItems)
+    // Check if product already exists in cart
+    if (cartItems.find(item => item.id === product.id)) {
+      // Already exists, add 1 to its quantity
+      setCartItems(cartItems.map(item => item.id === product.id ? {...item, quantity: item.quantity + 1} : item))
+      return
+    }
+    // Create product with base quantity (1)
+    setCartItems(cartItems => [...cartItems, {...product, quantity: 1}])
+  }
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -21,7 +42,11 @@ const Router = () => {
     
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <ShopContext.Provider value={{cartItems, addToCart}}>
+      <RouterProvider router={router} />
+    </ShopContext.Provider>
+  )
 };
 
 export default Router;

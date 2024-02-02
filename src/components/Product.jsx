@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
-const Product = ({ title, description, image, price, rating, id}) => {
+const Product = ({ title, image, price, id}) => {
   return (
     <article className="border-black border-1 text-center space-y-3">
       <img src={image} alt={title} width="300px" height="300px" className="object-scale-down w-[300px] h-[300px] mx-auto" />
@@ -18,10 +18,8 @@ const Product = ({ title, description, image, price, rating, id}) => {
 
 Product.propTypes = {
   title: PropTypes.string,
-  description: PropTypes.string,
   image: PropTypes.string,
   price: PropTypes.number,
-  rating: PropTypes.object,
   id: PropTypes.number,
 }
 

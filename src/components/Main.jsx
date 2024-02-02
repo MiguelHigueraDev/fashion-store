@@ -7,7 +7,6 @@ import SideMenu from './SideMenu'
 const Main = ({children}) => {
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [products, setProducts] = useState([])
 
   const toggleCart = () => {
     setIsCartOpen(!isCartOpen)
@@ -17,15 +16,16 @@ const Main = ({children}) => {
     setIsMenuOpen(!isMenuOpen)
   }
 
+
   return (
-    <div className="">
-        <Cart isOpen={isCartOpen} toggleCart={toggleCart} products={products} />
+    <>
+        <Cart isOpen={isCartOpen} toggleCart={toggleCart} />
         <SideMenu isOpen={isMenuOpen} toggleMenu={toggleMenu} />
         <div className="py-4 px-5">
           <Header isCartOpen={isCartOpen} toggleCart={toggleCart} toggleMenu={toggleMenu} />
-          {children}
+            {children}
         </div>
-    </div>
+    </>
   )
 }
 

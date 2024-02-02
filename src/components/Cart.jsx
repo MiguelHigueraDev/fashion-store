@@ -1,6 +1,10 @@
 import { PropTypes } from "prop-types";
+import { useContext } from "react";
+import { ShopContext } from "../Router";
 
-const Cart = ({ isOpen, toggleCart, products }) => {
+const Cart = ({ isOpen, toggleCart }) => {
+  const { cartItems } = useContext(ShopContext)
+
   if (isOpen) {
     return (
       <>
@@ -8,8 +12,10 @@ const Cart = ({ isOpen, toggleCart, products }) => {
           className="fixed w-screen h-screen z-40 bg-black opacity-50"
           onClick={toggleCart}
         ></div>
-        <div className="fixed max-w-[300px] z-50 bg-white h-screen right-0 p-4">
-          {products.map((product) => (
+        <div className="fixed min-w-[200px] max-w-[300px] z-50 bg-white h-screen right-0 p-4">
+          {cartItems.length > 0 ? <p className="text-xl font-bold mb-3">Your cart</p>
+          : <p className="text-xl font-bold mb-3">Your cart is empty</p>}
+          {cartItems.map((product) => (
             <div className="flex gap-3" key={product.id}>
               <img
                 src={product.image}
@@ -19,8 +25,8 @@ const Cart = ({ isOpen, toggleCart, products }) => {
                 className="w-[50px] h-[50px]"
               />
               <div>
-                <p>{product.title}</p>
-                <p>${product.price}</p>
+                <p className="text-sm">{product.title}</p>
+                <p>${product.price * product.quantity}</p>
               </div>
             </div>
           ))}
@@ -32,7 +38,6 @@ const Cart = ({ isOpen, toggleCart, products }) => {
 Cart.propTypes = {
   isOpen: PropTypes.bool,
   toggleCart: PropTypes.func,
-  products: PropTypes.array,
 };
 
 export default Cart;

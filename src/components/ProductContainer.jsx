@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PropTypes } from 'prop-types'
 import Loading from "./Loading";
 import Error from "./Error";
+import { ShopContext } from "../Router";
 
 const ProductContainer = ({ productId }) => {
+  const { addToCart } = useContext(ShopContext);
   const [productObj, setProductObj] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -28,7 +30,7 @@ const ProductContainer = ({ productId }) => {
         <div className="max-w-[500px] space-y-4 flex justify-center align-center flex-col">
             <h3 className="font-bold text-2xl">{productObj.title}</h3>
             <p className="text-lg font-normal text-gray-600">{productObj.description}</p>
-            <button className="mt-8 self-start btn">Add to cart</button>
+            <button className="mt-8 self-start btn" onClick={() => addToCart(productObj)}>Add to cart</button>
         </div>
     </div>
   )
