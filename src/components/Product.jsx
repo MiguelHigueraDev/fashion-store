@@ -1,6 +1,10 @@
 import { PropTypes } from 'prop-types'
 import { Link } from 'react-router-dom'
-const Product = ({ title, image, price, id}) => {
+import { ShopContext } from '../Router'
+import { useContext } from 'react'
+const Product = ({ product }) => {
+  const { addToCart } = useContext(ShopContext)
+  const { title, image, price, id } = product
   return (
     <article className="border-black border-1 text-center space-y-3">
       <img src={image} alt={title} width="300px" height="300px" className="object-scale-down w-[300px] h-[300px] mx-auto" />
@@ -9,7 +13,7 @@ const Product = ({ title, image, price, id}) => {
         <p className="text-xl font-bold">${price}</p>
       </div>
       <div className="flex gap-4 items-center justify-center">
-        <button className="btn">Add to cart</button>
+        <button onClick={() => addToCart(product)} className="btn">Add to cart</button>
         <Link to={`/product/${id}`} className="btn">Details</Link>
       </div>
     </article>
@@ -17,10 +21,7 @@ const Product = ({ title, image, price, id}) => {
 }
 
 Product.propTypes = {
-  title: PropTypes.string,
-  image: PropTypes.string,
-  price: PropTypes.number,
-  id: PropTypes.number,
+  product: PropTypes.object
 }
 
 export default Product

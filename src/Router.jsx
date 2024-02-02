@@ -14,16 +14,15 @@ export const ShopContext = createContext({
 const Router = () => {
   const [cartItems, setCartItems] = useState([])
 
-  const addToCart = (product) => {
-    console.log(cartItems)
+  const addToCart = (product, quantity = 1) => {
     // Check if product already exists in cart
     if (cartItems.find(item => item.id === product.id)) {
       // Already exists, add 1 to its quantity
-      setCartItems(cartItems.map(item => item.id === product.id ? {...item, quantity: item.quantity + 1} : item))
+      setCartItems(cartItems.map(item => item.id === product.id ? {...item, quantity: parseInt(item.quantity) + parseInt(quantity)} : item))
       return
     }
     // Create product with base quantity (1)
-    setCartItems(cartItems => [...cartItems, {...product, quantity: 1}])
+    setCartItems(cartItems => [...cartItems, {...product, quantity}])
   }
 
   const router = createBrowserRouter([

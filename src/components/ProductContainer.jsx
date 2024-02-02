@@ -9,6 +9,11 @@ const ProductContainer = ({ productId }) => {
   const [productObj, setProductObj] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [quantity, setQuantity] = useState(1);
+
+  const handleInputChange = (e) => {
+    setQuantity(e.target.value)
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -30,7 +35,10 @@ const ProductContainer = ({ productId }) => {
         <div className="max-w-[500px] space-y-4 flex justify-center align-center flex-col">
             <h3 className="font-bold text-2xl">{productObj.title}</h3>
             <p className="text-lg font-normal text-gray-600">{productObj.description}</p>
-            <button className="mt-8 self-start btn" onClick={() => addToCart(productObj)}>Add to cart</button>
+            <div className="flex gap-3 items-end">
+              <input type="number" min="1" className="border-2 border-gray-300 h-10 w-[70px] p-2" value={quantity} onInput={handleInputChange}/>
+              <button className="self-start btn" onClick={() => addToCart(productObj, quantity)}>Add to cart</button>
+            </div>
         </div>
     </div>
   )
