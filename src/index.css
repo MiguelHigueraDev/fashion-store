@@ -53,7 +53,7 @@ root {
 }
 
 .logo {
-    z-index: 1022;
+    z-index: 33;
     display: block;
     height: 2.8125rem;
     position: absolute;
@@ -61,4 +61,15 @@ root {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     width: 10rem
+}
+
+.logo-sm {
+    z-index: 33;
+    display: block;
+    height: 2.8125rem;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 7rem
 }

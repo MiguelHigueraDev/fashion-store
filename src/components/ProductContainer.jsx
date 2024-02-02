@@ -23,7 +23,7 @@ const ProductContainer = ({ productId }) => {
   if (error) return <Error message={'Product not found'}/>
 
   return (
-    <div className="max-w-800px mx-auto mt-10 md:mt-0 md:h-[90vh] flex gap-10 items-center justify-center">
+    <div className="max-w-800px mx-auto mt-[80px] md:mt-0 md:h-[90vh] flex flex-col md:flex-row gap-10 items-center justify-center">
         <img src={productObj.image} width={"200px"} height={"200px"} className="" />
         <div className="max-w-[500px] space-y-4 flex justify-center align-center flex-col">
             <h3 className="font-bold text-2xl">{productObj.title}</h3>
