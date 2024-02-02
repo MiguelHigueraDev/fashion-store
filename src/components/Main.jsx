@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types'
 
 const Main = ({children}) => {
   return (
-    <div className="py-2 px-5 mt-2">
+    <div className="py-2 px-5 my-2">
         <Header />
         {children}
     </div>

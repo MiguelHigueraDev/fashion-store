@@ -12,7 +12,7 @@ const Header = () => {
             <div className="">
                 <Link className="hover:underline decoration-black underline-offset-4" to="/cart">Cart</Link>
             </div>
-            <Link to="/" className="logo absolute left-[50%] m-0 w-30 top-0 z-10 block uppercase tracking-[5px] font-bold text-4xl flex-grow select-none">Svelte</Link>
+            <Link to="/" className="logo m-0 w-30 uppercase tracking-[5px] font-bold text-4xl flex-grow select-none">Svelte</Link>
         </nav>
     </header>
   )

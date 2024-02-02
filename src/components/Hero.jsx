@@ -1,5 +1,3 @@
-import image from '/collection.jpg'
-
 const Hero = () => {
   return (
     <div className="w-full mt-5">
